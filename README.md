@@ -18,13 +18,21 @@ A powerful Claude Code plugin that combines **Codacy CLI v2** static analysis wi
 
 - **Claude Code** (latest version)
 
-### Step 1: Install the Plugin
+### Step 1: Add the Marketplace
 
 ```bash
 /plugin marketplace add jaimefjorge/codacy-plugin
 ```
 
-### Step 2: Run Setup (Required)
+### Step 2: Install the Plugin
+
+After adding the marketplace, install the plugin:
+
+```bash
+/plugin install codacy
+```
+
+### Step 3: Run Setup (Required)
 
 **You must run setup before using any other commands.** This installs Codacy CLI v2 and configures your project:
 
