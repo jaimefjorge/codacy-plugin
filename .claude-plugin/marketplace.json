@@ -9,7 +9,10 @@
     {
       "name": "codacy-security-review",
       "description": "Security code review plugin combining Codacy CLI v2 static analysis with Claude's AI-powered security insights",
-      "source": "."
+      "source": {
+        "source": "github",
+        "repo": "jaimefjorge/codacy-security-review-plugin"
+      }
     }
   ]
 }
