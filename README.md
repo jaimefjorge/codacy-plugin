@@ -16,45 +16,25 @@ A powerful Claude Code plugin that combines **Codacy CLI v2** static analysis wi
 
 ### Prerequisites
 
-1. **Codacy CLI v2**
-
-   **macOS:**
-   ```bash
-   brew install codacy/codacy-cli-v2/codacy-cli-v2
-   ```
-
-   **Linux/WSL:**
-   ```bash
-   bash <(curl -Ls https://raw.githubusercontent.com/codacy/codacy-cli-v2/main/codacy-cli.sh)
-   ```
-
-2. **Claude Code** (latest version)
+- **Claude Code** (latest version)
 
 ### Install the Plugin
 
-**Option 1: Clone and use locally**
 ```bash
-git clone https://github.com/your-username/codacy-security-review.git
-claude --plugin-dir ./codacy-security-review
+/plugin marketplace add jaimefjorge/codacy-security-review-plugin
 ```
 
-**Option 2: Add to your project**
+Then run the setup command to install Codacy CLI v2 and configure your project:
+
 ```bash
-# Copy to your project's .claude directory
-cp -r codacy-security-review .claude/plugins/
+/codacy-security-review:setup
 ```
 
-**Option 3: Add to personal plugins**
-```bash
-# Copy to your personal Claude plugins
-cp -r codacy-security-review ~/.claude/plugins/
-```
-
-Then add to your settings:
-```json
-{
-  "plugins": ["~/.claude/plugins/codacy-security-review"]
-}
+The setup command will automatically:
+- Install Codacy CLI v2 if not already installed
+- Profile your project (languages, frameworks, architecture)
+- Generate project-specific security patterns
+- Configure the appropriate analysis tools
 ```
 
 ## Usage
@@ -62,7 +42,7 @@ Then add to your settings:
 ### Quick Start
 
 ```bash
-# 1. Initialize Codacy and generate project profile
+# 1. Setup (installs Codacy CLI v2 + profiles project + generates security patterns)
 /codacy-security-review:setup
 
 # 2. Run a full security review (uses project profile)
@@ -76,7 +56,7 @@ Then add to your settings:
 
 | Command | Description |
 |---------|-------------|
-| `/codacy-security-review:setup` | Initialize Codacy CLI v2, profile project, and generate security patterns |
+| `/codacy-security-review:setup` | Install Codacy CLI v2, profile project, and generate security patterns |
 | `/codacy-security-review:security-review` | Full security review with AI analysis |
 | `/codacy-security-review:quick-scan` | Fast scan of specific files or changes |
 | `/codacy-security-review:help` | Show help information |
