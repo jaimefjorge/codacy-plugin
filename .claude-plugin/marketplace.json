@@ -1,0 +1,12 @@
+{
+  "name": "codacy-security-review-marketplace",
+  "description": "Local marketplace for Codacy Security Review plugin",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "codacy-security-review",
+      "description": "Security code review plugin combining Codacy CLI v2 static analysis with Claude's AI-powered security insights",
+      "path": "."
+    }
+  ]
+}
