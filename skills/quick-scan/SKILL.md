@@ -58,9 +58,11 @@ Based on arguments provided, select the appropriate scan mode:
 If a file path is provided:
 
 ```bash
-# Run Codacy analysis on specific file
-~/.local/bin/codacy-cli-v2 analyze <filepath> 2>&1
+# Run Codacy analysis on the project directory
+~/.local/bin/codacy-cli-v2 analyze 2>&1
 ```
+
+Then filter the results to show only issues in the specified file.
 
 **If project profile exists**, also run targeted pattern checks:
 - Identify file language from extension
@@ -79,12 +81,14 @@ Then perform AI analysis focusing on:
 If `--staged` is specified:
 
 ```bash
-# Get list of staged files
+# Get list of staged files to know what to focus on
 git diff --cached --name-only
 
-# For each relevant file, run analysis
-~/.local/bin/codacy-cli-v2 analyze <file> 2>&1
+# Run Codacy analysis on the project directory
+~/.local/bin/codacy-cli-v2 analyze 2>&1
 ```
+
+Then filter the results to show only issues in the staged files.
 
 **Profile-Enhanced Scanning:**
 - If profile exists, filter files by detected languages (ignore non-source files)
@@ -103,15 +107,17 @@ Focus on:
 If `--commit <sha>` is specified:
 
 ```bash
-# Get files changed in commit
+# Get files changed in commit to know what to focus on
 git diff-tree --no-commit-id --name-only -r <sha>
 
-# Get the actual diff
+# Get the actual diff for context
 git show <sha> --no-stat
 
-# Run analysis on changed files
-~/.local/bin/codacy-cli-v2 analyze <files> 2>&1
+# Run Codacy analysis on the project directory
+~/.local/bin/codacy-cli-v2 analyze 2>&1
 ```
+
+Then filter the results to show only issues in the files changed in that commit.
 
 **Profile-Enhanced:**
 - Highlight changes in security-critical files
@@ -124,15 +130,17 @@ git show <sha> --no-stat
 If `--pr <number>` is specified:
 
 ```bash
-# Get PR diff using GitHub CLI
+# Get PR diff using GitHub CLI for context
 gh pr diff <number>
 
-# Get list of changed files
+# Get list of changed files to know what to focus on
 gh pr view <number> --json files -q '.files[].path'
 
-# Run analysis on PR files
-~/.local/bin/codacy-cli-v2 analyze <files> 2>&1
+# Run Codacy analysis on the project directory
+~/.local/bin/codacy-cli-v2 analyze 2>&1
 ```
+
+Then filter the results to show only issues in the files changed in the PR.
 
 **Profile-Enhanced:**
 - Provide context about which security components are affected
@@ -269,7 +277,7 @@ For quick scans, prioritize high-impact patterns:
 If `--fix` is specified and Codacy supports auto-fix for the tool:
 
 ```bash
-~/.local/bin/codacy-cli-v2 analyze --fix <files>
+~/.local/bin/codacy-cli-v2 analyze --fix 2>&1
 ```
 
 Then show what was fixed and what still needs manual attention.
